@@ -234,7 +234,13 @@
             <button onclick="addToCart('Heels', 500)">Add to Cart</button>
         </div>
     </div>
-
+    <div class="form-section">
+        <h2>Live Discounts and Offers</h2>
+        <ul id="discounts">
+        </ul>
+        <button class="submit-btn" onclick="applyDiscount()">Apply Discount</button>
+    </div>
+    
  
     <div class="form-section">
         <h2>Delivery Address</h2>
@@ -348,6 +354,50 @@
         document.getElementById('bagIcon').addEventListener('click', () => {
             document.querySelector('.cart-summary').scrollIntoView({ behavior: 'smooth' });
         });
+
+        const discounts = [
+    { code: "MariaJAM", description: "10% off on all orders", percentage: 10 },
+    { code: "MONGODB", description: "Free Shipping on orders above 50", percentage: 50 },
+    { code: "ITCC30", description: "20% off on orders above ₱2000", percentage: 20 },
+];
+
+function displayDiscounts() {
+    const discountsList = document.getElementById('discounts');
+    discounts.forEach((offer, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${offer.description} (Code: ${offer.code})`;
+        li.setAttribute('data-index', index);
+        discountsList.appendChild(li);
+    });
+}
+
+
+function applyDiscount() {
+    const cartTotalElement = document.getElementById('cartTotal');
+    const cartTotal = parseFloat(cartTotalElement.textContent);
+
+    if (cartTotal === 0) {
+        alert("Your cart is empty! Add products to apply a discount.");
+        return;
+    }
+
+    const code = prompt("Enter the discount code:").toUpperCase();
+    const offer = discounts.find(discount => discount.code === code);
+
+    if (!offer) {
+        alert("Invalid discount code! Please try again.");
+        return;
+    }
+
+    const discountAmount = (cartTotal * offer.percentage) / 100;
+    const newTotal = cartTotal - discountAmount;
+
+    cartTotalElement.textContent = newTotal.toFixed(2);
+    alert(`Discount applied! You saved ₱${discountAmount.toFixed(2)}.`);
+}
+
+document.addEventListener('DOMContentLoaded', displayDiscounts);
+
     </script>
 </body>
 </html>
