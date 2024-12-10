@@ -1,0 +1,353 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoThrift Haven</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Dancing Script', cursive;
+        }
+        .header {
+            background-image: url('https://www.w3schools.com/w3images/forest.jpg'); 
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+        }
+        .main-content {
+            margin: 20px;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 200px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .product-item img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .product-item button {
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product-item button:hover {
+            background-color: #218838;
+        }
+        .form-section, .cart-summary {
+            margin: 20px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        #trackOrderForm {
+        margin-top: 10px;
+        }
+
+       #trackOrderForm input {
+       padding: 8px;
+       margin-right: 10px;
+       border: 1px solid #ddd;
+       border-radius: 4px;
+       }
+       #trackOrderForm button {
+       padding: 8px 15px;
+       background-color: #007bff;
+       color: white;
+       border: none;
+       border-radius: 4px;
+       cursor: pointer;
+       }
+       #trackOrderForm button:hover {
+       background-color: #0056b3;
+       }
+       .checkout-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+    display: inline-block;
+}
+
+.checkout-btn:hover {
+    background-color: #0056b3;
+}
+
+.floating-bag {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.floating-bag:hover {
+    background-color: #218838;
+}
+
+    </style>
+</head>
+<body>
+    <div id="bagIcon" class="floating-bag">🛒</div>
+    <button id="checkoutButton" class="checkout-btn">Go to Cart Summary</button>
+    <div class="header">
+        <h1>Welcome to EcoThrift Haven</h1>
+        <p>Your one-stop shop for sustainable and affordable items.</p>
+    </div>
+
+    <div class="main-content">
+        <h2>Product Catalog</h2>
+        <div class="product-list">
+            <div class="product-item">
+                <img src="short.SSS.jpg" alt="Shorts">
+                <h3>Shorts</h3>
+                <p>₱250</p>
+                <button onclick="addToCart(' Shorts', 250)">Add to Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="red dress.jpg" alt="Dress">
+                <h3>Red Dress</h3>
+                <p>₱500</p>
+                <button onclick="addToCart('Red Dress', 500)">Add to Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="white shoes.jpg" alt="Shoes">
+                <h3>Recycled Shoes</h3>
+                <p>₱1,200</p>
+                <button onclick="addToCart('White Shoes', 1200)">Add to Cart</button>
+            </div>
+
+            <div class="product-item">
+                <img src="cardigan.webp" alt="Cardigan">
+                <h3>Cardigan</h3>
+                <p>₱500</p>
+                <button onclick="addToCart('Cardigan', 500)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="red shoes.jpg"alt="Shoes">
+                <h3>World Balance Shoes</h3>
+                <p>₱500</p>
+                <button onclick="addToCart('World Balance Shoes', 500)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="black.webp"alt="Shoes">
+                <h3>World Balance Shoes</h3>
+                <p>₱500</p>
+                <button onclick="addToCart('World Balance Shoes', 500)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="belt.webp"alt="Belt">
+                <h3>Belt</h3>
+                <p>₱350</p>
+                <button onclick="addToCart('World Balance Shoes', 350)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="hoodies.jpg"alt="Hoodies">
+                <h3>Hoodies</h3>
+                <p>₱350</p>
+                <button onclick="addToCart('Hoodies', 350)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="short.SSS.jpg"alt="Short">
+                <h3>Shorts</h3>
+                <p>₱150</p>
+                <button onclick="addToCart('Short', 150)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="short.jpg"alt="Short">
+                <h3>Shorts</h3>
+                <p>₱150</p>
+                <button onclick="addToCart('Short', 150)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="pink shorts.jpg"alt="Short">
+                <h3>Pink Shorts</h3>
+                <p>₱150</p>
+                <button onclick="addToCart('Short', 150)">Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="short.jpg"alt="Short">
+                <h3>Shorts</h3>
+                <p>₱150</p>
+                <button onclick="addToCart('Short', 150)">Add to Cart</button>
+            </div>
+        <div class="product-item">
+            <img src="Chiffon Shorts.jpg"alt="Short">
+            <h3> Chiffon Shorts</h3>
+            <p>₱150</p>
+            <button onclick="addToCart('Chiffon Short', 150)">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="lady shorts for exercise.avif"alt="Short">
+            <h3> Exercise Shorts</h3>
+            <p>₱150</p>
+            <button onclick="addToCart('Chiffon Short', 150)">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="lady heels.webp"alt="Heels">
+            <h3> Heels</h3>
+            <p>₱500</p>
+            <button onclick="addToCart('Heels', 500)">Add to Cart</button>
+        </div>
+    </div>
+
+ 
+    <div class="form-section">
+        <h2>Delivery Address</h2>
+        <form id="deliveryForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required><br>
+            <label for="address">Address:</label>
+            <textarea id="address" placeholder="Enter your delivery address" rows="3" required></textarea><br>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" required><br>
+        </form>
+    </div>
+
+    
+    <div class="form-section">
+        <h2>Payment Method</h2>
+        <form id="paymentForm">
+            <label for="paymentMethod">Choose Payment Method:</label>
+            <select id="paymentMethod" required>
+                <option value="">--Select--</option>
+                <option value="CreditCard">Credit Card</option>
+                <option value="CashOnDelivery">Cash on Delivery</option>
+                <option value="Gcash">GCash</option>
+                <option value="Paypal">PayPal</option>
+            </select><br>
+        </form>
+    </div>
+
+    <div class="cart-summary">
+        <h2>Cart Summary</h2>
+        <ul id="cartItems"></ul>
+        <p>Total: ₱<span id="cartTotal">0</span></p>
+        <button class="submit-btn" onclick="checkout()">Place Order</button>
+    </div>
+
+    <div class="form-section">
+        <h2>Track Your Order Here</h2>
+        <form id="trackOrderForm" onsubmit="trackOrder(event)">
+            <label for="trackingNumber">Tracking Number:</label>
+            <input type="text" id="orderNumber" placeholder="Enter your tracking number" required>
+            <button class="submit-btn" type="submit">Track Order</button>
+        </form>
+        <p id="orderStatus" style="margin-top: 10px;"></p>
+    </div>
+    
+
+    <script>
+        const cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price });
+            updateCart();
+            alert(`${productName} has been added to your cart.`);
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - ₱${item.price}`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+            cartTotal.textContent = total;
+        }
+
+        function checkout() {
+            const fullName = document.getElementById('fullName').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            if (!fullName || !address || !phone || !paymentMethod) {
+                alert("Please fill in all fields before checking out.");
+                return;
+            }
+
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            alert(`Order placed successfully!\n\nName: ${fullName}\nAddress: ${address}\nPhone: ${phone}\nPayment Method: ${paymentMethod}`);
+            cart.length = 0;
+            updateCart();
+        }
+        function trackOrder(event) {
+    event.preventDefault(); //
+
+    const orderNumber = document.getElementById('orderNumber').value.trim();
+    const orderStatus = document.getElementById('orderStatus');
+
+    if (orderNumber === "12345") {
+        orderStatus.textContent = `Order #${orderNumber} is currently out for delivery!`;
+        orderStatus.style.color = "green";
+    } else if (orderNumber === "67890") {
+        orderStatus.textContent = `Order #${orderNumber} is currently being processed.`;
+        orderStatus.style.color = "blue";
+    } else {
+        orderStatus.textContent = `Order #${orderNumber} not found. Please check your order number and try again.`;
+        orderStatus.style.color = "red";
+    }
+}
+        document.getElementById('checkoutButton').addEventListener('click', () => {
+            document.querySelector('.cart-summary').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('bagIcon').addEventListener('click', () => {
+            document.querySelector('.cart-summary').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
