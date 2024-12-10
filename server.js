@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -120,7 +121,7 @@ app.put('/user/:id', async (req, res) => {
     }
 });
 
-
+// **Delete**: Delete user by ID
 app.delete('/user/:id', async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.id);
@@ -134,3 +135,8 @@ app.delete('/user/:id', async (req, res) => {
     }
 });
 
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server running on http://127.0.0.1:${PORT}`);
+});
